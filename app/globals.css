@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Couleur de fond principale - blanc ou bleu très clair */
+    --background: 195 100% 90%;
+    --foreground: 217 90% 32%;
+
+    /* Cartes et éléments en avant-plan */
+    --card: 0 0% 100%;
+    --card-foreground: 217 90% 32%;
+
+    /* Popover et menus */
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 90% 32%;
+
+    /* Couleur primaire - bleu */
+    --primary: 217 90% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Couleur secondaire - bleu plus clair */
+    --secondary: 217 80% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Couleur tertiaire - bleu encore plus clair */
+    --tertiary: 195 100% 85%;
+    --tertiary-foreground: 217 90% 32%;
+
+    /* Couleur quaternaire - bleu-violet */
+    --quaternary: 220 70% 60%;
+    --quaternary-foreground: 0 0% 100%;
+
+    /* Couleur atténuée */
+    --muted: 195 100% 95%;
+    --muted-foreground: 217 90% 32%;
+
+    /* Couleur d'accent */
+    --accent: 195 100% 85%;
+    --accent-foreground: 217 90% 32%;
+
+    /* Couleur d'alerte */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Bordures et éléments d'interface */
+    --border: 195 100% 80%;
+    --input: 195 100% 80%;
+    --ring: 217 90% 32%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 195 100% 90%;
+    --foreground: 217 90% 32%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 217 90% 32%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 90% 32%;
+
+    --primary: 217 90% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 80% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 195 100% 95%;
+    --muted-foreground: 217 90% 32%;
+
+    --accent: 195 100% 85%;
+    --accent-foreground: 217 90% 32%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 195 100% 80%;
+    --input: 195 100% 80%;
+    --ring: 217 90% 32%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.animate-in {
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.fade-in-80 {
+  animation-name: fadeIn;
+  opacity: 0.8;
+}
+
+.slide-in-from-top-5 {
+  animation-name: slideInFromTop;
+  transform: translateY(-5%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-5%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Effet de brillance pour les cartes */
+.glow-on-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-on-hover::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(14, 64, 151, 0) 0%,
+    rgba(14, 64, 151, 0.1) 50%,
+    rgba(14, 64, 151, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.5s ease-out;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+
+.glow-on-hover:hover::after {
+  opacity: 1;
+  transform: rotate(30deg) translate(10%, 10%);
+}
+
+/* Style pour la carte Google Maps */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Dégradés et effets visuels */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--tertiary)) 0%, hsl(var(--background)) 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, hsl(var(--tertiary)) 0%, hsl(var(--primary)) 100%);
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--tertiary)) 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--quaternary)) 100%);
+}
+
+/* Animation pour les éléments de la page contact */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
