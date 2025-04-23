@@ -84,7 +84,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-primary/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-primary/70">&copy; {new Date().getFullYear()} Proxy Info. Tous droits réservés.</p>
+          <p className="text-xs text-primary/70">&copy; {new Date().getFullYear()} Maël. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
